@@ -1,0 +1,26 @@
+<div class="login-form">
+    <h2>Logowanie<hr></h2>
+  <form #f="ngForm" (submit)="login(f.value)">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input #email="ngModel" ngModel name="email" [class.is-invalid]=" email.touched && email.invalid" required email type="email"
+        class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+      <div class="invalid-feedback" *ngIf="email.touched && email.invalid">
+        <div *ngIf="email.errors.required">Pole jest wymagane.</div>
+        <div *ngIf="email.errors.email">Nieprawidłowy adres Email.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Hasło</label>
+      <input #password="ngModel" ngModel name="password" type="password" id="password" class="form-control" [class.is-invalid]="password.touched && password.invalid"
+        placeholder="Hasło" required [rangeLength]="[5,18]">
+      <div class="invalid-feedback" *ngIf="password.touched && password.invalid">
+        <p *ngIf="password.errors.required">Pole jest wymagane.</p>
+        <p *ngIf="password.errors.rangeLength">Hasło powinno mień min 5 znaków</p>
+
+      </div>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!f.valid">Zaloguj się</button>
+  </form>
+</div>
