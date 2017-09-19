@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  // user:firebase.User;
 
   constructor(private afAuth: AngularFireAuth, private authService: AuthService) { }
 

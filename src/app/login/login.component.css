@@ -1,13 +1,7 @@
-.form-signin{
-    max-width: 35%;
-    padding: 15px;
-    padding-top:150px;
-    margin: 0 auto;
-}
 
 .login-form{
     position: relative;
-    top: 100px;
+    top: 40px;
     padding: 20px;
     /* background-color: aquamarine; */
     border: 1px solid #D1D1D1;

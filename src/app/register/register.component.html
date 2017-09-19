@@ -1,7 +1,12 @@
-
 <div class="login-form">
-        <h2>Rejestracja<hr></h2>
+    <h2>Rejestracja
+        <hr>
+    </h2>
     <form #f="ngForm" (submit)="register(f.value)">
+    
+            <!-- <input #displayName="ngModel" ngModel name="displayName" type="text"> -->
+               
+      
         <div class="form-group">
             <label for="email">Email</label>
             <input #email="ngModel" ngModel name="email" [class.is-invalid]=" email.touched && email.invalid" required email type="email"

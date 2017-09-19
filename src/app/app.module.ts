@@ -1,3 +1,5 @@
+import { UserService } from './user.service';
+import { AuthGuardService } from './auth-guard.service';
 import { AuthService } from './auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -17,6 +19,8 @@ import { ContactComponent } from './contact/contact.component';
 import { environment } from '../environments/environment';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { UserPanelComponent } from './user-panel/user-panel.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +31,8 @@ import { RegisterComponent } from './register/register.component';
     ContactComponent,
     LoginComponent,
     RegisterComponent,
+    UserPanelComponent,
+    AdminPanelComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,11 +47,16 @@ import { RegisterComponent } from './register/register.component';
       { path: 'about', component: AboutComponent },
       { path: 'contact', component: ContactComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent }
+      { path: 'register', component: RegisterComponent },
+      { path: 'user-panel', component: UserPanelComponent, canActivate:[AuthGuardService] },
+      { path: 'admin-panel', component: AdminPanelComponent,canActivate:[AuthGuardService] }
+
     ])
   ],
   providers: [
-    AuthService
+    AuthService,
+    AuthGuardService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
