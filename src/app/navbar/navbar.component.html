@@ -14,24 +14,23 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/contact">Kontakt</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" routerLink="/login">Logowanie</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" routerLink="/register">Rejestracja</a>
-            </li>
-
       </ul>
-      <div ngbDropdown class="dropdown">
-        <button *ngIf="authService.user$ | async as user" ngbDropdownToggle class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
+      <ng-template #anonymous>
+          <div class="btn-group" role="group" aria-label="Basic example">
+              <a role="button" class="btn btn-secondary fix" routerLink="/login">Logowanie</a>
+              <a role="button" class="btn btn-secondary fix" routerLink="/register">Rejestracja</a>
+            </div>
+      </ng-template> 
+      <div ngbDropdown class="dropdown" *ngIf="authService.user$ | async as user; else anonymous">
+        <button  ngbDropdownToggle class="btn btn-secondary dropdown-toggle" type="button"
+          id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {{user.email}}
         </button>
         <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" routerLink="user-panel">Panel użytkownika</a>
           <a class="dropdown-item" routerLink="admin">Panel admina</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" (click)="logout()" >Wyloguj</a>
+          <a class="dropdown-item" (click)="logout()">Wyloguj</a>
         </div>
       </div>
     </div>

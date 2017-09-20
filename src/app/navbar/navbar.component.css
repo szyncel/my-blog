@@ -3,3 +3,7 @@
     margin: 0 auto;
     border-bottom: 3px solid #00A51B;
 }
+
+.fix{
+    cursor: pointer;
+}
