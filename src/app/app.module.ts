@@ -1,14 +1,15 @@
+import { PostService } from './post.service';
 import { UserService } from './user.service';
 import { AuthGuardService } from './auth-guard.service';
 import { AuthService } from './auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
 
 import { AppComponent } from './app.component';
@@ -21,6 +22,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { AdminPostsComponent } from './admin-posts/admin-posts.component';
+import { PostsFormComponent } from './posts-form/posts-form.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,8 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
     RegisterComponent,
     UserPanelComponent,
     AdminPanelComponent,
+    AdminPostsComponent,
+    PostsFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,15 +53,19 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
       { path: 'contact', component: ContactComponent },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
-      { path: 'user-panel', component: UserPanelComponent, canActivate:[AuthGuardService] },
-      { path: 'admin-panel', component: AdminPanelComponent,canActivate:[AuthGuardService] }
+      { path: 'user-panel', component: UserPanelComponent, canActivate: [AuthGuardService] },
+      { path: 'admin', component: AdminPanelComponent, canActivate: [AuthGuardService] },     
+      { path: 'admin/posts/new', component: PostsFormComponent, canActivate: [AuthGuardService] },
+      { path: 'admin/posts/:id', component: PostsFormComponent, canActivate: [AuthGuardService] },
+      { path: 'admin/posts', component: AdminPostsComponent, canActivate: [AuthGuardService] }
 
     ])
   ],
   providers: [
     AuthService,
     AuthGuardService,
-    UserService
+    UserService,
+    PostService
   ],
   bootstrap: [AppComponent]
 })

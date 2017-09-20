@@ -1,0 +1,20 @@
+<h2>Posty</h2>
+<hr>
+<a routerLink="/admin/posts/new" class="btn btn-success btn-lg " role="button" aria-disabled="true">Dodaj posta</a>
+<table class="table table-inverse">
+    <thead>
+        <tr>
+            <th>Tytuł</th>
+            <th>Data</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let post of posts$ | async">
+            <td>{{post.title}}</td>
+            <td>{{post.date | date:'medium'}}</td>
+            <th><a [routerLink]="['/admin/posts/',post.$key]">Edit</a> </th>
+        </tr>
+
+    </tbody>
+</table>

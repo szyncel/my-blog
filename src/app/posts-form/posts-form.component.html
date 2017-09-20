@@ -1,0 +1,23 @@
+<h2>
+  Nowy post</h2>
+<hr>
+
+<form #f="ngForm" (ngSubmit)="save(f.value)">
+  <div class="form-group">
+    <label for="title">Tytuł</label>
+    <input #title="ngModel" [(ngModel)]="post.title" name="title" type="text" class="form-control" id="title" placeholder="Wpisz tytuł">
+  </div>
+  <div class="form-group">
+    <label for="content">Treść</label>
+    <textarea #content="ngModel" [(ngModel)]="post.content" name="content" class="form-control" id="content" rows="3"></textarea>
+  </div>
+
+
+  <div class="form-group">
+    <label for="img">Obraz</label>
+    <input #img="ngModel" [(ngModel)]="post.img" name="img" type="text" class="form-control" id="img">
+  </div>
+
+  <button type="submit" class="btn btn-success">Dodaj</button>
+  <button type="button" (click)="delete()" class="btn btn-danger">Usuń</button>
+</form>

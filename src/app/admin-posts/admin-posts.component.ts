@@ -2,11 +2,11 @@ import { PostService } from './../post.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-admin-posts',
+  templateUrl: './admin-posts.component.html',
+  styleUrls: ['./admin-posts.component.css']
 })
-export class HomeComponent implements OnInit {
+export class AdminPostsComponent implements OnInit {
   posts$;
 
   constructor(private postService: PostService) {
